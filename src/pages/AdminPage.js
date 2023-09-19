@@ -425,8 +425,8 @@ function AdminPage() {
                 <th>REGION</th>
                 <th>VOTES</th>
                 <th>SPECIAL</th>
-                <th>DIASPORA</th>
-                <th>INMATE</th>
+                {/* <th>DIASPORA</th>
+                <th>INMATE</th> */}
               </tr>
             </thead>
             <tbody>
@@ -535,7 +535,7 @@ function AdminPage() {
                     </td>
 
                     {/* //second button */}
-                    <td>
+                    {/* <td>
                       {isVoted2 ? (
                         <span style={{ color: "red", fontSize: "90%" }}>
                           RESULTS CAPTURED
@@ -563,10 +563,10 @@ function AdminPage() {
                           </button>
                         </div>
                       )}
-                    </td>
+                    </td> */}
 
                     {/* Third button */}
-                    <td>
+                    {/* <td>
                       {isVoted3 ? (
                         <span style={{ color: "red", fontSize: "90%" }}>
                           RESULTS CAPTURED
@@ -596,7 +596,7 @@ function AdminPage() {
                         </div>
 
                       )}
-                    </td>
+                    </td> */}
                   </tr>
                 );
               })}
@@ -883,8 +883,8 @@ function AdminPage() {
                 <th>REGION</th>
                 <th>VOTES</th>
                 <th>SPECIAL</th>
-                <th>DIASPORA</th>
-                <th>INMATE</th>
+                {/* <th>DIASPORA</th>
+                <th>INMATE</th> */}
               </tr>
             </thead>
             <tbody>
@@ -993,7 +993,7 @@ function AdminPage() {
                     </td>
 
                     {/* //second button */}
-                    <td>
+                    {/* <td>
                       {isVoted2 ? (
                         <span style={{ color: "red", fontSize: "90%" }}>
                           RESULTS CAPTURED
@@ -1021,10 +1021,10 @@ function AdminPage() {
                           </button>
                         </div>
                       )}
-                    </td>
+                    </td> */}
 
                     {/* Third button */}
-                    <td>
+                    {/* <td>
                       {isVoted3 ? (
                         <span style={{ color: "red", fontSize: "90%" }}>
                           RESULTS CAPTURED
@@ -1054,7 +1054,7 @@ function AdminPage() {
                         </div>
 
                       )}
-                    </td>
+                    </td> */}
                   </tr>
                 );
               })}
