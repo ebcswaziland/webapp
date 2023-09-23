@@ -411,22 +411,22 @@ function AdminPage() {
         defaultActiveKey="products"
         id="uncontrolled-tab-example"
         className="mb-3"
+        style={{ marginTop: '20px' }}
       >
         <Tab eventKey="products" title="MEMBERS OF PARLIAMENTS">
-          <div className="d-flex justify-content-between"></div>
+          <div className="d-flex justify-content-between" style={{ overflowX: "auto" }}>
           <table className="table mt-3">
             <thead>
               <tr>
                 <th>CANDIDATE IMAGE</th>
                 <th>NAME</th>
                 <th>SURNAME</th>
-                {/* <th>CHIEFDOM</th> */}
+            
                 <th>INKHUNDLA</th>
                 <th>REGION</th>
                 <th>VOTES</th>
                 <th>SPECIAL</th>
-                {/* <th>DIASPORA</th>
-                <th>INMATE</th> */}
+             
               </tr>
             </thead>
             <tbody>
@@ -534,75 +534,12 @@ function AdminPage() {
                       )}
                     </td>
 
-                    {/* //second button */}
-                    {/* <td>
-                      {isVoted2 ? (
-                        <span style={{ color: "red", fontSize: "90%" }}>
-                          RESULTS CAPTURED
-                        </span> // Display "voted" if the user has voted for this MP
-                      ) : (
-                        <div style={actionIconsStyles}>
-                          <button
-                            onClick={() => editHandler5(item)}
-                            style={{
-                              backgroundColor: editedRecord === item ? "gray" : "#000000",
-                              fontSize: "15px",
-                              margin: "5px", // Use double quotes for property values
-                              height: "35px", // Use double quotes for property values
-                              width: "100px", // Use double quotes for property values
-                              borderRadius: "10px", // Use double quotes for property values
-                              border: "none",
-                              boxShadow: "1px 1px 0px 2px rgba(0, 0, 0, 0.3)", // Remove spaces in rgba()
-                              // background: "rgb(141, 217, 252)", // Fix the background property value
-                              cursor: "pointer",
-                              color: "white", // Add text color
-                            }}
-                            disabled={editedRecord === item}
-                          >
-                            DIASPORA
-                          </button>
-                        </div>
-                      )}
-                    </td> */}
-
-                    {/* Third button */}
-                    {/* <td>
-                      {isVoted3 ? (
-                        <span style={{ color: "red", fontSize: "90%" }}>
-                          RESULTS CAPTURED
-                        </span> // Display "voted" if the user has voted for this MP
-                      ) : (
-                        <div style={actionIconsStyles}>
-                          <button
-                            onClick={() => editHandler6(item)}
-                            style={{
-                              backgroundColor: editedRecord === item ? "gray" : "#34aadc",
-                              fontSize: "15px",
-                              margin: "5px", // Use double quotes for property values
-                              height: "35px", // Use double quotes for property values
-                              width: "100px", // Use double quotes for property values
-                              borderRadius: "10px", // Use double quotes for property values
-                              border: "none",
-                              boxShadow: "1px 1px 0px 2px rgba(0, 0, 0, 0.3)", // Remove spaces in rgba()
-                              // background: "rgb(141, 217, 252)", // Fix the background property value
-                              cursor: "pointer",
-                              color: "white", // Add text color
-                            }}
-                            disabled={editedRecord === item}
-                          >
-                            INMATE
-                          </button>
-
-                        </div>
-
-                      )}
-                    </td> */}
                   </tr>
                 );
               })}
             </tbody>
           </table>
-
+          </div>
 
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
@@ -871,8 +808,8 @@ function AdminPage() {
         </Tab>
 
         <Tab eventKey="orders" title="INDVUNA YENKHUNDLA">
-          <div className="d-flex justify-content-between"></div>
-          <table className="table mt-3">
+          <div className="d-flex justify-content-between" style={{ overflowX: "auto" }}>
+          <table className="table mt-3" style={{ marginBottom: '20px' }}>
             <thead>
               <tr>
                 <th>CANDIDATE IMAGE</th>
@@ -992,75 +929,12 @@ function AdminPage() {
                       )}
                     </td>
 
-                    {/* //second button */}
-                    {/* <td>
-                      {isVoted2 ? (
-                        <span style={{ color: "red", fontSize: "90%" }}>
-                          RESULTS CAPTURED
-                        </span> // Display "voted" if the user has voted for this MP
-                      ) : (
-                        <div style={actionIconsStyles}>
-                          <button
-                            onClick={() => editHandler3(item)}
-                            style={{
-                              backgroundColor: editedRecord === item ? "gray" : "#000000",
-                              fontSize: "15px",
-                              margin: "5px", // Use double quotes for property values
-                              height: "35px", // Use double quotes for property values
-                              width: "100px", // Use double quotes for property values
-                              borderRadius: "10px", // Use double quotes for property values
-                              border: "none",
-                              boxShadow: "1px 1px 0px 2px rgba(0, 0, 0, 0.3)", // Remove spaces in rgba()
-                              // background: "rgb(141, 217, 252)", // Fix the background property value
-                              cursor: "pointer",
-                              color: "white", // Add text color
-                            }}
-                            disabled={editedRecord === item}
-                          >
-                            DIASPORA
-                          </button>
-                        </div>
-                      )}
-                    </td> */}
-
-                    {/* Third button */}
-                    {/* <td>
-                      {isVoted3 ? (
-                        <span style={{ color: "red", fontSize: "90%" }}>
-                          RESULTS CAPTURED
-                        </span> // Display "voted" if the user has voted for this MP
-                      ) : (
-                        <div style={actionIconsStyles}>
-                          <button
-                            onClick={() => editHandler4(item)}
-                            style={{
-                              backgroundColor: editedRecord === item ? "gray" : "#34aadc",
-                              fontSize: "15px",
-                              margin: "5px", // Use double quotes for property values
-                              height: "35px", // Use double quotes for property values
-                              width: "100px", // Use double quotes for property values
-                              borderRadius: "10px", // Use double quotes for property values
-                              border: "none",
-                              boxShadow: "1px 1px 0px 2px rgba(0, 0, 0, 0.3)", // Remove spaces in rgba()
-                              // background: "rgb(141, 217, 252)", // Fix the background property value
-                              cursor: "pointer",
-                              color: "white", // Add text color
-                            }}
-                            disabled={editedRecord === item}
-                          >
-                            INMATE
-                          </button>
-
-                        </div>
-
-                      )}
-                    </td> */}
                   </tr>
                 );
               })}
             </tbody>
           </table>
-
+          </div>
 
           <Modal show={show2} onHide={handleClose2}>
             <Modal.Header closeButton>
