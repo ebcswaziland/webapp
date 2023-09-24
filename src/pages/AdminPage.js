@@ -146,6 +146,7 @@ function AdminPage() {
   console.log("Test Poll " + poll);
 
   async function getOrdersData() {
+  
     try {
       setLoading(true);
       console.log("Test2 Poll " + poll);
@@ -195,6 +196,8 @@ function AdminPage() {
   }
 
   async function getTinkhundlaData() {
+  
+    
     try {
       setLoading(true);
       const productData = await getDocs(
@@ -276,6 +279,7 @@ function AdminPage() {
   };
 
   const updateMP = async (product, pollstation) => {
+    localStorage.setItem("TAB", "products");
     const mpDocRef = doc(fireDB, `${poll}/MP/nominees`, product.id);
     try {
       await runTransaction(fireDB, async (transaction) => {
@@ -304,6 +308,7 @@ function AdminPage() {
   };
 
   const updatetindvuna = async (product, pollstation) => {
+    localStorage.setItem("TAB", "orders");
     const indvunaDocRef = doc(fireDB, `${poll}/Indvuna/nominees`, product.id);
     try {
       await runTransaction(fireDB, async (transaction) => {
@@ -408,14 +413,14 @@ function AdminPage() {
   return (
     <Layout loading={loading}>
       <Tabs
-        defaultActiveKey="products"
+        defaultActiveKey={localStorage.getItem('TAB')}
         id="uncontrolled-tab-example"
         className="mb-3"
         style={{ marginTop: '20px' }}
       >
         <Tab eventKey="products" title="MEMBERS OF PARLIAMENTS">
           <div className="d-flex justify-content-between" style={{ overflowX: "auto" }}>
-          <table className="table mt-3">
+          <table className="table mt-3" >
             <thead>
               <tr>
                 <th>CANDIDATE IMAGE</th>
@@ -809,7 +814,7 @@ function AdminPage() {
 
         <Tab eventKey="orders" title="INDVUNA YENKHUNDLA">
           <div className="d-flex justify-content-between" style={{ overflowX: "auto" }}>
-          <table className="table mt-3" style={{ marginBottom: '20px' }}>
+          <table className="table mt-3" style={{ marginTop: '20px' }}>
             <thead>
               <tr>
                 <th>CANDIDATE IMAGE</th>
@@ -1202,392 +1207,6 @@ function AdminPage() {
 
         </Tab>
 
-        {/* <Tab eventKey="bucopho" title="BUCOPHO">
-          <div className="d-flex justify-content-between"></div>
-          <table className="table mt-3">
-            <thead>
-              <tr>
-                <th>NOMINEE IMAGE</th>
-                <th>NAME</th>
-                <th>SURNAME</th>
-                <th>CHIEFDOM</th>
-                <th>INKHUNDLA</th>
-                <th>REGION</th>
-                <th>VOTES</th>
-                <th>ACTION</th>
-              </tr>
-            </thead>
-            <tbody>
-              {bucopho.map((item) => {
-                const isVoted =
-                  item.primary_votes && item.primary_votes[pollstation];
-                return (
-                  <tr key={item.id}>
-                    <td>
-                      <img
-                        src={item.img}
-                        height="80"
-                        width="80"
-                        alt={item.name}
-                      />
-                    </td>
-
-                    <td style={{ ...smallfont }}>{item.name.toUpperCase()}</td>
-                    <td style={{ ...smallfont }}>
-                      {item.surname.toUpperCase()}
-                    </td>
-                    <td style={{ ...smallfont }}>
-                      {item.chiefdom.toUpperCase()}
-                    </td>
-                    <td style={{ ...smallfont }}>
-                      {item.inkhundla.toUpperCase()}
-                    </td>
-                    <td style={{ ...smallfont }}>
-                      {item.region.toUpperCase()}
-                    </td>
-                    <td style={{ ...smallfont }}>
-                      {item.primary_votes instanceof Map ? (
-                        Array.from(item.primary_votes.keys()).map((key) => (
-                          <div key={key}>
-                            {key}: {item.primary_votes.get(key)}
-                          </div>
-                        ))
-                      ) : (
-                        <div>
-                          {typeof item.primary_votes === "object" ? (
-                            // Attempt to get properties of the primary_votes object
-                            Object.keys(item.primary_votes).map((key) => (
-                              <div key={key}>
-                                {key.toUpperCase()}:{" "}
-                                {item.primary_votes[key].toUpperCase()}
-                              </div>
-                            ))
-                          ) : (
-                            // Handle the case where primary_votes is not defined
-                            <span style={{ color: "red", fontSize: "90%" }}>
-                              RESULTS NOT CAPTURED
-                            </span>
-                          )}
-                        </div>
-                      )}
-                    </td>
-                    <td>
-                      {isVoted ? (
-                        <span style={{ color: "red", fontSize: "90%" }}>
-                          RESULTS CAPTURED
-                        </span> // Display "voted" if the user has voted for this BUCOPHO
-                      ) : (
-                        <div style={actionIconsStyles}>
-                          <FaEdit
-                            onClick={() => editHandler4(item)}
-                            color={editedRecord === item ? "gray" : "blue"}
-                            size={30}
-                            disabled={editedRecord === item}
-                          />
-                        </div>
-                      )}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-
-          <Modal show={show4} onHide={handleClose4}>
-            <Modal.Header closeButton>
-              <Modal.Title>
-                {add ? "Add a product" : "ADD VOTE TO BUCOPHO"}
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              {" "}
-              <div className="register-form">
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <img
-                    src={product.img}
-                    alt="Product Image"
-                    className="img-fluid"
-                    style={{ borderRadius: "50%" }}
-                    width="35%"
-                    height="auto"
-                  />
-                </div>
-
-                <input
-                  type="text"
-                  value={product.name}
-                  className="form-control"
-                  placeholder="name"
-                  readOnly={true}
-                />
-
-                <input
-                  type="text"
-                  value={product.surname}
-                  className="form-control"
-                  placeholder="surname"
-                  readOnly={true}
-                />
-
-                <input
-                  type="text"
-                  value={product.inkhundla}
-                  className="form-control"
-                  placeholder="price"
-                  readOnly={true}
-                />
-
-                <input
-                  type="text"
-                  value={product.region}
-                  className="form-control"
-                  placeholder="category"
-                  readOnly={true}
-                  style={{ display: "none" }}
-                />
-
-                <input
-                  type="number"
-                  className="form-control"
-                  placeholder="enter vote"
-                  onChange={(e) => {
-                    setProduct({
-                      ...product,
-                      primary_votes: {
-                        ...product.primary_votes,
-                        [pollstation]: e.target.value,
-                      },
-                    });
-                  }}
-                />
-                <hr />
-              </div>
-            </Modal.Body>
-            <Modal.Footer>
-              
-
-              <button onClick={handleVoteSubmissionBucopho}>SAVE</button>
-            </Modal.Footer>
-          </Modal>
-        </Tab> }
-       
-
-        <Tab eventKey="v_turnout" title="VOTER TURNOUT">
-          <div className="d-flex justify-content-between"></div>
-          <table className="table mt-3">
-            <thead>
-              <tr>
-                <th>NAME</th>
-                <th>CLOSE-TIME</th>
-                <th>OPEN-TIME</th>
-                <th>STATUS</th>
-                <th>TOTAL-REGISTERED</th>
-                <th>TOTAL-VOTES</th>
-                <th>ACTION</th>
-              </tr>
-            </thead>
-            <tbody>
-              {turnout.map((item) => {
-                const isVoted = item.name === pollstation;
-                const statusText = item.status ? "Open" : "Closed"; // Check the boolean value
-                const status = item.status;
-                const handleStatusChange = async () => {
-                  // Toggle the status when the checkbox is clicked
-                  const updatedStatus = !status;
-                  console.log("Updated Status:", updatedStatus);
-
-                  try {
-                    // Update the status in the Firestore database
-                    // Replace 'updateDoc' with your actual update method
-                    await updateDoc(
-                      doc(
-                        fireDB,
-                        `${primary_poll}/Pollings/stations/${item.id}`
-                      ),
-                      {
-                        status: updatedStatus,
-                      }
-                    );
-
-                    // Perform any other actions you need
-                    console.log("Status updated successfully.");
-                  } catch (error) {
-                    console.error("Error updating status:", error);
-                  }
-                  window.location.reload();
-                };
-
-                // CSS styles for the toggle button
-                const toggleButtonStyles = {
-                  display: "inline-block",
-                  width: "50px",
-                  height: "25px",
-                  borderRadius: "25px",
-                  backgroundColor: "#ccc",
-                  position: "relative",
-                  cursor: "pointer",
-                };
-
-                // CSS styles for the toggle indicator
-                const toggleIndicatorStyles = {
-                  width: "25px",
-                  height: "25px",
-                  borderRadius: "50%",
-                  backgroundColor: "#fff",
-                  position: "absolute",
-                  top: "0",
-                  left: "0",
-                  transition: "0.2s",
-                };
-
-                // CSS styles for the 'Open' and 'Closed' text
-                const statusTextStyles = {
-                  display: "inline-block",
-                  marginLeft: "10px",
-                };
-
-                return (
-                  <tr key={item.id}>
-                    <td style={{ ...smallfont }}>{item.name.toUpperCase()}</td>
-                    <td>19:00</td>
-                    <td>07:00</td>
-
-                    <td style={{ display: "flex", alignItems: "center" }}>
-                      {isVoted ? (
-                        <div>
-                          <button
-                            onClick={handleStatusChange}
-                            style={toggleButtonStyles}
-                          >
-                            <div
-                              style={{
-                                ...toggleIndicatorStyles,
-                                left: status ? "25px" : "0",
-                                backgroundColor: status ? "green" : "red",
-                              }}
-                            ></div>
-                          </button>
-                          <span
-                            style={{
-                              ...statusTextStyles,
-                              color: status ? "green" : "red",
-                            }}
-                          >
-                            {status ? "OPEN" : "CLOSED"}
-                          </span>
-                        </div>
-                      ) : (
-                        <div style={{ display: "flex", alignItems: "center" }}>
-                          <FaBan
-                            color={editedRecord === item ? "gray" : "red"}
-                            size={30}
-                            disabled={editedRecord === item}
-                          />
-                          <span
-                            style={{
-                              ...statusTextStyles,
-                              color: "red",
-                            }}
-                          >
-                            NON-APPLICABLE
-                          </span>
-                        </div>
-                      )}
-                    </td>
-
-                    <td>{item.total_registered}</td>
-                    <td>{item.voters_count}</td>
-                    <td>
-                      {isVoted ? (
-                        <div style={actionIconsStyles}>
-                          <FaEdit
-                            onClick={() => editHandler3(item)}
-                            color={editedRecord === item ? "gray" : "blue"}
-                            size={30}
-                            disabled={editedRecord === item}
-                          />
-                        </div>
-                      ) : (
-                        <div style={actionIconsStyles}>
-                          <FaBan
-                            color={editedRecord === item ? "gray" : "red"}
-                            size={30}
-                            disabled={editedRecord === item}
-                          />
-                        </div>
-                      )}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-
-          <Modal show={show3} onHide={handleClose3}>
-            <Modal.Header closeButton>
-              <Modal.Title>
-                {add ? "Add a product" : "ADD VOTER TURNOUT"}
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              {" "}
-              <div className="register-form">
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                ></div>
-
-                <input
-                  type="text"
-                  value={product.name}
-                  className="form-control"
-                  placeholder="name"
-                  readOnly={true}
-                />
-
-       
-
-                <input
-                  type="text"
-                  value={product.total_registered}
-                  className="form-control"
-                  placeholder="category"
-                  readOnly={true}
-                  style={{ display: "none" }}
-                />
-
-                <input
-                  type="number"
-                  className="form-control"
-                  placeholder="Add Voter Turnout"
-                  onChange={(e) => {
-                    setProduct({
-                      ...product,
-                      voters_count: e.target.value,
-                    });
-                  }}
-                />
-                <hr />
-              </div>
-            </Modal.Body>
-            <Modal.Footer>
-      
-
-              <button onClick={updateturnout}>SAVE</button>
-            </Modal.Footer>
-          </Modal>
-        </Tab>
-
-      */}
 
       </Tabs>
     </Layout>
