@@ -43,7 +43,7 @@ const MyPDF = ({ data, titles }) => {
                     <Text style={styles.headerCell}>INMATES</Text>
                     <Text style={styles.headerCell}>DIASPORA</Text>
                     <Text style={styles.headerCell}>SPECIAL</Text>
-                    <Text style={styles.headerCell}>Secondary</Text>
+                    <Text style={styles.headerCell}>MAIN DAY</Text>
                     <Text style={styles.headerCell}>Total</Text>
                 </View>
 
