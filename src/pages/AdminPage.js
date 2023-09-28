@@ -126,7 +126,7 @@ function AdminPage() {
         },
         {
           name: "Maphalaleni",
-          cities: ["Edlozini", "Madlolo", "Maphalaleni", "Mncengeni", "Mfeni", "Nsingweni"]
+          cities: ["Edlozini", "Madlolo", "Maphalaleni", "Mcengeni", "Mfeni", "Nsingweni"]
         },
         {
           name: "Mayiwane",
@@ -150,11 +150,11 @@ function AdminPage() {
         },
         {
           name: "Ndzingeni",
-          cities: ["Bulandzeni", "Kwaliweni", "Ludlawini", "Meleti", "Mgundundlovu", "Mvuma", "Ndzingeni", "Nkamanzi", "Ntsanjeni"]
+          cities: ["Bulandzeni", "Kwaliweni", "Ludlawini", "Meleti", "Mgungundlovu", "Mvuma", "Ndzingeni", "Nkamanzi", "Ntsanjeni"]
         },
         {
           name: "Nkhaba",
-          cities: ["Ejubukweni", "Ekujinjelweni", "Malanti", "Nkhaba"]
+          cities: ["Ejubukweni", "Ekuvinjelweni", "Malanti", "Nkhaba"]
         },
         {
           name: "Ntfonjeni",
